@@ -62,6 +62,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Color(0xfffdebef)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                      ),
+                  ),
+
                 ),
               ),
             ),
@@ -117,7 +123,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   count: boarding.length,
                   effect: ScrollingDotsEffect(
                     activeStrokeWidth: 3,
-                    activeDotColor: Color(0xffffd1dc),
+                    activeDotColor: Color(0xff009688),
                     activeDotScale: 1.3,
                     maxVisibleDots: 5,
                     radius: 2,

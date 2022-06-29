@@ -1,8 +1,7 @@
-
-
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import '../Modules/onBaordingScreen/onboarding.dart';
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Widget buildBoardingItem(BoardingModel model) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +42,7 @@ Widget buildBoardingItem(BoardingModel model) {
     ],
   );
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MainButton extends StatelessWidget {
   final VoidCallback? onTabbed;
   final Text? myStyle;
@@ -75,7 +74,7 @@ class MainButton extends StatelessWidget {
     );
   }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MyFormField extends StatelessWidget {
 
   final TextEditingController Controller;
@@ -84,14 +83,17 @@ class MyFormField extends StatelessWidget {
   final bool isPhone;
   final bool isPassWord;
   final Widget suffixIcon;
+
   MyFormField({
     required this.Controller,
     required this.textInputType,
     required this.hintText,
-    this.isPhone=false,
-    this.isPassWord=false,
-    this.suffixIcon=const Icon( Icons.remove_red_eye_outlined,color: Colors.black),
+    this.isPhone = false,
+    this.isPassWord = false,
+    this.suffixIcon = const Icon(
+        Icons.remove_red_eye_outlined, color: Colors.black),
   });
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -101,42 +103,50 @@ class MyFormField extends StatelessWidget {
 
       onFieldSubmitted: (value) {},
       onChanged: (value) {},
-      decoration:   InputDecoration(
-        prefixIcon: isPhone? CountryCodePicker(
+      decoration: InputDecoration(
+
+        prefixIcon: isPhone ? CountryCodePicker(
           onChanged: print,
           // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
           initialSelection: 'IT',
-          favorite: ['+39','FR'],
+          favorite: ['+39', 'FR'],
           // optional. Shows only country name and flag
           showCountryOnly: false,
           // optional. Shows only country name and flag when popup is closed.
           showOnlyCountryWhenClosed: false,
-          // optional. aligns the flag and the Text left
+          showFlag: false,
+          showDropDownButton: true,
           alignLeft: false,
-        ):  null,
+        ) : null,
         hintText: '${hintText}',
-        suffixIcon: isPassWord ? suffixIcon: SizedBox.shrink(),
-        contentPadding: EdgeInsets.symmetric(
-            vertical: 10.0, horizontal: 20.0),
+        suffixIcon: isPassWord ? suffixIcon : SizedBox.shrink(),
+        contentPadding: EdgeInsets.all(20.0),
         border: OutlineInputBorder(
           borderRadius:
           BorderRadius.all(Radius.circular(15.0)),
+
         ),
+
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
               color: Colors.grey, width: 1.0),
           borderRadius:
           BorderRadius.all(Radius.circular(15.0)),
+
         ),
       ),
     );
   }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class DontHaveAccount extends StatelessWidget {
   final String? label;
   final VoidCallback? onPressed;
   final String? btnLabel;
-  DontHaveAccount({required this.label,required this.onPressed,required this.btnLabel});
+
+  DontHaveAccount(
+      {required this.label, required this.onPressed, required this.btnLabel});
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -146,7 +156,7 @@ class DontHaveAccount extends StatelessWidget {
           '${label}',
         ),
         TextButton(
-          onPressed:onPressed,
+          onPressed: onPressed,
 
           child: Text('${btnLabel}'),
         ),
@@ -154,6 +164,7 @@ class DontHaveAccount extends StatelessWidget {
     );
   }
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class PlatformButton extends StatelessWidget {
 final String? imageName;
 final String? label;
@@ -169,6 +180,7 @@ PlatformButton({required this.imageName, required this.label});
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(image: AssetImage('${imageName}'),),
+              SizedBox(width: 5,),
               Text(
                 '${label}',
                 style: TextStyle(
@@ -192,6 +204,7 @@ PlatformButton({required this.imageName, required this.label});
     );
   }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class MyDiveder extends StatelessWidget {
   const MyDiveder({
     Key? key,
@@ -200,7 +213,7 @@ class MyDiveder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20,bottom: 20,),
+      padding: const EdgeInsets.only(top: 10,bottom: 10,),
       child: Row(
         children: [
           Expanded(
@@ -225,6 +238,65 @@ class MyDiveder extends StatelessWidget {
             ),
           ),
         ],),
+    );
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class FormFieldName extends StatelessWidget {
+  final String? label;
+  FormFieldName({ required this.label});
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '${label}',
+      style: TextStyle(
+        fontSize:15.0,
+        color: Colors.black,
+
+      ),
+
+    );
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class AuthPageName extends StatelessWidget {
+  final String? Name;
+  AuthPageName({
+    required
+    this.Name,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+
+      children: [
+        Text(
+          '${Name}',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 40,
+
+          ),
+        ),
+        Spacer(),
+        TextButton(
+          onPressed: (){},
+          child: Text(
+            'Help',
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
+        Icon(
+          Icons.help,
+          color: Colors.blue,
+          size: 24.0,
+        ),
+      ],
     );
   }
 }
